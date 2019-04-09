@@ -96,3 +96,6 @@ vocab.pkl
 
 musicData/midi/
 musicData/txt/
+
+*.xlsx
+*.xlsx#
