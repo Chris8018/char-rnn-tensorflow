@@ -99,3 +99,5 @@ musicData/txt/
 
 *.xlsx
 *.xlsx#
+
+.idea/
