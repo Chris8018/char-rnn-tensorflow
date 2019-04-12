@@ -6,12 +6,10 @@ import argparse
 import os
 from six.moves import cPickle
 
-
 from six import text_type
 
-
 parser = argparse.ArgumentParser(
-                   formatter_class=argparse.ArgumentDefaultsHelpFormatter)
+    formatter_class=argparse.ArgumentDefaultsHelpFormatter)
 parser.add_argument('--save_dir', type=str, default='save',
                     help='model directory to store checkpointed models')
 parser.add_argument('-n', type=int, default=500,
@@ -27,12 +25,13 @@ args = parser.parse_args()
 import tensorflow as tf
 from model import Model
 
+
 def sample(args):
     with open(os.path.join(args.save_dir, 'config.pkl'), 'rb') as f:
         saved_args = cPickle.load(f)
     with open(os.path.join(args.save_dir, 'chars_vocab.pkl'), 'rb') as f:
         chars, vocab = cPickle.load(f)
-    #Use most frequent char if no prime is given
+    # Use most frequent char if no prime is given
     if args.prime == '':
         args.prime = chars[0]
     model = Model(saved_args, training=False)
@@ -43,8 +42,9 @@ def sample(args):
         if ckpt and ckpt.model_checkpoint_path:
             saver.restore(sess, ckpt.model_checkpoint_path)
             data = model.sample(sess, chars, vocab, args.n, args.prime,
-                               args.sample).encode('utf-8')
+                                args.sample).encode('utf-8')
             print(data.decode("utf-8"))
+
 
 if __name__ == '__main__':
     sample(args)
