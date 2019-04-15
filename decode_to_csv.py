@@ -24,29 +24,6 @@ Real denominator - 2^denominator
 
 0, 0, End_of_file
 
-Simplified version:
-{
-
-r {
-XX NOTE VELOCITY
-...
-}
-
-l {
-XX NOTE VELOCITY
-...
-}
-
-}
-
-
-if "Piano right" or "Piano left" then from next line
-while not "End_track"
-if "Note_on_c" then
-    TRACK_NUM, POSITION, Note_on_c, 0, NOTE, VELOCITY
-    ==> POSITION NOTE VELOCITY
-
-
 """
 
 
